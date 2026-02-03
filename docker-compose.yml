@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+  backend:
+    build:
+      context: ./backend
+      target: ${DOCKER_TARGET:-production}
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: ${DB_URL}
+      DJANGO_SETTINGS_MODULE: api.settings.${DJANGO_ENV:-production}
+      DEBUG: ${DEBUG:-0}
+
+
+  frontend:
+    build:
+      context: ./frontend
+      target: ${DOCKER_TARGET:-production}
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+      - CHOWN
+      - SETUID
+      - SETGID
+
+volumes:
+  postgres_data:
