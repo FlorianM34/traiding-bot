@@ -2,9 +2,11 @@ from rest_framework import serializers
 from .models import Order
 
 class OrderCreateSerializer(serializers.ModelSerializer):
+    total_value = serializers.ReadOnlyField()
+    
     class Meta:
         model = Order
-        fields = ['symbol', 'order_type', 'quantity', 'unit_price'] 
+        fields = ["symbol", "order_type", "quantity", "unit_price", "total_value"] 
 
     def validate_quantity(self, value):
         if value <= 0:
@@ -21,7 +23,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Total value must be positive.")
         return value
     
-    def create(self, validate_data):
+    def create(self, validate_data):        
         quantity = validate_data['quantity']
         unit_price = validate_data['unit_price']
         total_value = quantity * unit_price

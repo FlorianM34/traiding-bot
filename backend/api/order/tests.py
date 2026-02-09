@@ -18,8 +18,9 @@ class TestOrdersAPI:
         
         response = client.post(url, data, format='json')
         
+        print(response.data)
         assert response.status_code == status.HTTP_201_CREATED
-        assert response.data["total_value"] == 100000.0 # Ton calcul auto du serializer
+        assert response.data["total_value"] == 100000.0
         assert Order.objects.count() == 1
 
     def test_list_orders(self, client):
