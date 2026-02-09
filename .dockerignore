@@ -26,6 +26,10 @@ secrets/
 .pypirc
 kubeconfig
 
+node_modules
+package-lock.json
+
+
 # Docker (optionnel — à exclure si remote build)
 # Dockerfile*
 # docker-compose*.yml

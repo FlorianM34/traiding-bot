@@ -1,2 +1,8 @@
 .venv
 .env
+
+*.py[cod]
+*$py.class
+
+__pycache__/
+*.py[cod]

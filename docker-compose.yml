@@ -16,10 +16,11 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: ${DB_URL}
+      DATABASE_URL: ${DATABASE_URL}
       DJANGO_SETTINGS_MODULE: api.settings.${DJANGO_ENV:-production}
       DEBUG: ${DEBUG:-0}
-
+    volumes: 
+      - ./backend:/app
 
   frontend:
     build:
@@ -32,6 +33,9 @@ services:
       - CHOWN
       - SETUID
       - SETGID
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
 
 volumes:
   postgres_data:

@@ -22,7 +22,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # On définit les routes de la doc ici
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path("api/orders/", include("api.order.urls")),
 ]
 
