@@ -1,0 +1,11 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+
+jobs:
+  call-backend-ci:
+    uses: org/ci-cd-templates/.github/workflows/build.yml@main
