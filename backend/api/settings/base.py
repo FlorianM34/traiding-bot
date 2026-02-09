@@ -1,6 +1,12 @@
 import os
 import dj_database_url
 
+
+
+print("BASE BASE BASE ")
+print("BASE BASE BASE ")
+print("BASE BASE BASE ")
+print("BASE BASE BASE ")
 """
 Django settings for api project.
 
