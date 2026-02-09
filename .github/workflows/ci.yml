@@ -8,4 +8,4 @@ on:
 
 jobs:
   call-backend-ci:
-    uses: org/ci-cd-templates/.github/workflows/build.yml@main
+    uses: FlorianM34/TB-OPS/.github/workflows/ci.yml@main
