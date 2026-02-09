@@ -9,3 +9,5 @@ on:
 jobs:
   call-backend-ci:
     uses: FlorianM34/TB-OPS/.github/workflows/ci.yml@main
+    secrets:
+        GH_PAT: ${{ secrets.GH_PAT }}
